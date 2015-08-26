@@ -13,10 +13,21 @@ This is simple memo application.
 
 - [Backbone.js](http://backbonejs.org/)
 - [bower](http://bower.io/)
+- [Sinatra](http://www.sinatrarb.com/)
 
 ### Usage
 
 ### Install
+
+- Front liblaries
+
+You need bower npm package.
+
+```
+$ npm i -g bower
+
+$ bower install
+```
 
 ### Contribution
 
