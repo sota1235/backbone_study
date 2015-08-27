@@ -9,7 +9,7 @@
 App.NoteListItemView = Backbone.View.extend
   tagName: 'tr'
   render: () ->
-    template = $('#NoteListItemView-template').html()
-    html     = _.template template, this.model.toJSON()
+    template = _.template $('#noteListItemView-template').html()
+    html     = template this.model.toJSON()
     this.$el.html html
     return this
