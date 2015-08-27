@@ -40,13 +40,6 @@ $ () ->
       models = initializeNotes()
       App.noteCollection.reset models
 
-    # initialize parent view by collection
-    noteListView = new App.NoteListView
-      collection: App.noteCollection
-
-    # show notes list
-    App.mainContainer.show noteListView
-
     # initialization of router and start managing history
     App.router = new App.Router()
     Backbone.history.start()
