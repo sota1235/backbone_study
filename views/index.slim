@@ -10,7 +10,11 @@
   #header-container
   #main-container
 
+== slim :'backbone/_noteListView'
+== slim :'Backbone/_noteListItemView'
+
 - content_for :addJs do
   script src='/js/index.js'
   script src='/js/model.js'
   script src='/js/container.js'
+  script src='/js/note_list_item.js'
