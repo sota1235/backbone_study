@@ -37,6 +37,14 @@ $ npm i -g bower
 $ bower install
 ```
 
+- Built in server
+
+```
+$ bundle exec rackup -o 0.0.0.0
+```
+
+Then, you can access `http://localhost:9292`.
+
 ### Contribution
 
 ### Licence
