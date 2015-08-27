@@ -7,9 +7,10 @@ script#noteListItemView-template type='text/template'
     | </a>
   td
     .text-right
-      a.btn.btn-default.btn-sm.js-edit href='#'
-        span.glyphicon.glyphicon-edit
-        | Edit
+      | <a class="btn btn-default btn-sm js-edit" href="#notes/<%= id %>/edit">
+      span.glyphicon.glyphicon-edit
+      | Edit
+      | </a>
       a.btn.btn-danger.btn-sm.js-delete href='#'
         span.glyphicon.glyphicon-remove
         | Delete

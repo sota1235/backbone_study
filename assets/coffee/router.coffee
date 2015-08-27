@@ -8,9 +8,10 @@
 
 App.Router = Backbone.Router.extend
   routes:
-    'notes/:id': 'showNoteDetail'
-    'new'      : 'showNewNote'
-    '*actions' : 'defaultRoute'
+    'notes/:id'      : 'showNoteDetail'
+    'new'            : 'showNewNote'
+    'notes/:id/edit' : 'showEditNote'
+    '*actions'       : 'defaultRoute'
 
   # you can receive the 'id' param router received
   # as argument named 'id'
@@ -52,3 +53,17 @@ App.Router = Backbone.Router.extend
 
     App.mainContainer.show noteFormView
     App.headerContainer.empty()
+
+  showEditNote: (id) ->
+    self = @
+    note = App.noteCollection.get id
+    noteFormView = new App.NoteFormView
+      model: note
+
+    noteFormView.on 'submit:form', (attrs) ->
+      note.save attrs
+
+      self.showNoteDetail note.get 'id'
+      self.navigate 'notes/' + note.get 'id'
+
+    App.mainContainer.show noteFormView
