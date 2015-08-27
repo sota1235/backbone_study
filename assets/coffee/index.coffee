@@ -46,3 +46,7 @@ $ () ->
 
     # show notes list
     App.mainContainer.show noteListView
+
+    # initialization of router and start managing history
+    App.router = new App.Router()
+    Backbone.history.start()
