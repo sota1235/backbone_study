@@ -1,3 +1,3 @@
 # script for index page
 
-alert 'hello, world!'
+window.App = {}
