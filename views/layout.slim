@@ -1,0 +1,8 @@
+doctype html
+html
+  head
+    == slim :'partial/_header'
+    == yield_content :addCss
+    == yield_content :addJs
+  body
+    == yield
