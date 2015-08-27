@@ -15,7 +15,9 @@ App.NoteListView = Backbone.View.extend
 
   initialize: (options) ->
     # receive Backbone.Collectin instance
-    this.collection = options.collection
+    @collection = options.collection
+    # call render() by collection's reset event
+    @listenTo @collection, 'reset', @render
 
   render: () ->
     # build own DOMs by tmpelate

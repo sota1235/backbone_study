@@ -8,10 +8,11 @@
 
 App.Router = Backbone.Router.extend
   routes:
-    'notes/:id'      : 'showNoteDetail'
-    'new'            : 'showNewNote'
-    'notes/:id/edit' : 'showEditNote'
-    '*actions'       : 'defaultRoute'
+    'notes/:id'           : 'showNoteDetail'
+    'new'                 : 'showNewNote'
+    'notes/:id/edit'      : 'showEditNote'
+    'notes/search/:query' : 'searchNote'
+    '*actions'            : 'defaultRoute'
 
   # you can receive the 'id' param router received
   # as argument named 'id'
@@ -29,15 +30,28 @@ App.Router = Backbone.Router.extend
     this.showNoteList()
     this.navigate 'notes'
 
-  showNoteList: () ->
-    noteListView = new App.NoteListView
-      collection: App.noteCollection
-    App.mainContainer.show noteListView
-    # call function to show view controls notes
-    this.showNoteControl()
+  showNoteList: (models) ->
+
+    if !@filteredCollection
+      @filteredCollection = new App.NoteCollection()
+
+    if !App.mainContainer.has App.NoteListView
+      noteListView = new App.NoteListView
+        collection: @filteredCollection
+      App.mainContainer.show noteListView
+
+    models = models || App.noteCollection.models
+
+    @filteredCollection.reset models
+    @showNoteControl()
 
   showNoteControl: () ->
     noteControlView = new App.NoteControlView()
+
+    noteControlView.on 'submit:form', (query) ->
+      @searchNote query
+      @navigate 'notes/search/' + query
+    , @
     App.headerContainer.show noteControlView
 
   showNewNote: () ->
@@ -67,3 +81,8 @@ App.Router = Backbone.Router.extend
       self.navigate 'notes/' + note.get 'id'
 
     App.mainContainer.show noteFormView
+
+  searchNote: (query) ->
+    filtered = App.noteCollection.filter (note) ->
+      return note.get('title').indexOf(query) != -1
+    @showNoteList filtered

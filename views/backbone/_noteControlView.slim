@@ -1,7 +1,13 @@
 script#noteControlView-template type='text/template'
   .row
     .col-sm-6
-      /set searching form later
+      /set searching form
+      form.form-inline.js-search-form
+        .input-group
+          input.form-control.js-search-query type='text' name='q'
+          .input-group-btn
+            button.btn.btn-default type='submit'
+              i.glyphicon.glyphicon-search
     .col-sm-6.text-right
       a.btn.btn-primary.btn-small.js-new href='#new'
         span.glyphicon.glyphicon-plus

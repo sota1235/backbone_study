@@ -8,7 +8,15 @@
 
 App.NoteControlView = Backbone.View.extend
 
+  events:
+    'submit .js-search-form': 'onSubmit'
+
   render: () ->
     html = $('#noteControlView-template').html()
     this.$el.html html
     return this
+
+  onSubmit: (e) ->
+    e.preventDefault()
+    query = @$('.js-search-query').val()
+    @trigger 'submit:form', query

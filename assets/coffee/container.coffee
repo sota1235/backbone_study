@@ -27,3 +27,6 @@ App.Container = Backbone.View.extend
   empty: () ->
     this.destroyView this.currentView
     this.currentView = null
+
+  has: (obj) ->
+    return @currentView instanceof obj
