@@ -19,6 +19,9 @@ App.Router = Backbone.Router.extend
       model: note
     App.mainContainer.show noteDetailView
 
+    # remove [New Note] button
+    App.headerContainer.empty()
+
   # any routing pattern not matching
   defaultRoute: () ->
     this.showNoteList()
@@ -28,3 +31,9 @@ App.Router = Backbone.Router.extend
     noteListView = new App.NoteListView
       collection: App.noteCollection
     App.mainContainer.show noteListView
+    # call function to show view controls notes
+    this.showNoteControl()
+
+  showNoteControl: () ->
+    noteControlView = new App.NoteControlView()
+    App.headerContainer.show noteControlView

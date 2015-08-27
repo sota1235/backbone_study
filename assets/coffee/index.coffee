@@ -32,6 +32,9 @@ $ () ->
   App.mainContainer = new App.Container
     el: '#main-container'
 
+  App.headerContainer = new App.Container
+    el: '#header-container'
+
   # receive data of NoteCollection
   # it's from local storage by Backbone.LocalStorage
   App.noteCollection.fetch().then (notes) ->
