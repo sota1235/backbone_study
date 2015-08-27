@@ -20,6 +20,9 @@ App.NoteListView = Backbone.View.extend
     @listenTo @collection, 'reset', @render
 
   render: () ->
+    # remove ald views
+    @removeItemViews()
+
     # build own DOMs by tmpelate
     template = $('#noteListView-template').html()
     this.$el.html template
@@ -34,8 +37,13 @@ App.NoteListView = Backbone.View.extend
 
     # take all models in collection and
     # render each view, then insert it into parent DOM tree
-    this.collection.each (note) ->
+    @itemViews = @collection.map (note) ->
       itemView = new App.NoteListItemView
         model: note
       $insertionPoint.append itemView.render().$el
     , this
+
+  removeItemViews: () ->
+    # call remove() to each view
+    _.invoke @itemViews, 'remove'
+
