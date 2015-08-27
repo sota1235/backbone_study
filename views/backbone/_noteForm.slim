@@ -1,0 +1,14 @@
+script#noteForm-template type='text/template'
+  form
+    .form-group
+      label for='noteTitle'
+        | Title
+      | <input class="form-control js-noteTitle" id="noteTitle"
+      |  type="text" value="<%= title %>">
+    .form-group
+      label for='noteBody'
+        | Body
+      textarea.form-control.js-noteBody rows="8"
+        | <%= body %>
+    button.btn.btn-default type='submit'
+      | Submit
