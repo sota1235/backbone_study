@@ -19,9 +19,17 @@ This is simple memo application.
 
 ### Install
 
+- Install gem package to your local folder
+
+You need [bundler](https://github.com/bundler/bundler).
+
+```
+$ bundle install --path vendor/bundle
+```
+
 - Front liblaries
 
-You need bower npm package.
+You need [bower](https://github.com/bower/bower) npm package.
 
 ```
 $ npm i -g bower
